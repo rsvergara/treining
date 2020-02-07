@@ -4,42 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Vue</title>
-    <style media="screen">
-        .red{
-            color: red
-        }
-
-        .green{
-            color: green
-        }
-
-        .vueImg{
-            width: 100px;
-            height: 100px;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
         <h1>{{titulo}}</h1>
-        <img 
-        :src="imagem" 
-        :alt="alt"
-        :class="img"
-        >
-        <p :class="classHtml" style="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat mauris in felis vulputate vulputate. Integer vitae posuere odio. Quisque eu massa sit amet ligula dignissim imperdiet ut vitae ex. Praesent eros purus, mattis nec elit sed, mollis iaculis sem.</p>
-
+        <button :class="btnClassLimpar">Limpar</button>
+        <button :class="btnClassEnviar">Enviar</button>
     </div>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                titulo: "Aula 06: v-bind",
-                imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
-                alt: "Vue.js",
-                classHtml: "green",
-                img: "vueImg"
+                titulo: "Aula 07: v-bind class e style",
+                btnClassLimpar: {
+                    'btn-danger': true,
+                    'btn-lg': true
+                },
+
+                btnClassEnviar: [
+                    'btn-primary', {'btn-sm': true}
+                ]
             }
         });
 
