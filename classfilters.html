@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{titulo}}</h1>
+        <ul>
+            <li v-for="item in usuarios">{{item.nome | toUpperCase() | truncate('5') }}</li>
+        </ul>
+        <form action="https://www.google.com">
+            <button type="submit" class="btn btn-primary" v-on:click.prevent.stop="enviar()">Enviar</button>
+        </form>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                titulo: "Aula 09: Filtros",
+                usuarios: [
+                    {nome: "Fulano"},
+                    {nome: "Siclano"},
+                    {nome: "Beltrano"}
+
+                ]
+            },
+            methods: {
+            },
+
+            filters: {
+                toUpperCase(str){
+                    return str.toUpperCase();
+                },
+
+                truncate(str, length){
+                    var output = str;
+                    if(output.length > length){
+                        output = str.substring(0, length) + ' ...';
+                    }
+                    return output;
+                }
+            },
+        });
+
+    </script>
+</body>
+</html>
