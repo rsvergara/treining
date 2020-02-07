@@ -5,59 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Vue</title>
+    <style media="screen">
+        .red{
+            color: red
+        }
+
+        .green{
+            color: green
+        }
+
+        .vueImg{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <h1>{{titulo}}</h1>
-        <label for="">Nome</label><br>
-        <input type="text" v-model="nome"></input><br>
-
-        <label for="">Telefone</label><br>
-        <input type="number" v-model="telefone"></input>
-
-        <br><br>
-        <label for="">Deseja receber nossas novidades?</label><br>
-        <input type="radio" value="Sim" v-model="novidades">Sim</input><br>
-        <input type="radio" value="Não" v-model="novidades">Não</input>
-
-        <br><br>
-        <label for="">Interesses</label><br>
-        <input type="checkbox" value="Futebol" v-model="interesses">Futebol</input><br>
-        <input type="checkbox" value="Fórmula 1" v-model="interesses">Fórmula 1</input><br>
-        <input type="checkbox" value="Corrida" v-model="interesses">Corrida</input>
-
-        <br><br>
-        <label for="">Como nos conheceu?</label><br>
-        <select v-model="conheceu">
-            <option value="">Escolha</option>
-            <option value="Google">Google</option>
-            <option value="TV">TV</option>
-            <option value="Revista">Revista</option>
-        </select>
-
-        <br><br>
-
-        <button>Enviar</button>
-
-        <br><br>
-
-        Nome: {{nome}}<br>
-        Telefone: {{telefone}}<br>
-        Deseja receber novidades? {{novidades}}<br>
-        Interesses: {{interesses}}<br>
-        Como nos conheceu?: {{conheceu}}<br>
+        <img 
+        :src="imagem" 
+        :alt="alt"
+        :class="img"
+        >
+        <p :class="classHtml" style="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat mauris in felis vulputate vulputate. Integer vitae posuere odio. Quisque eu massa sit amet ligula dignissim imperdiet ut vitae ex. Praesent eros purus, mattis nec elit sed, mollis iaculis sem.</p>
 
     </div>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                titulo: "Aula 05 - v-model",
-                nome: "",
-                telefone: "",
-                novidades: "",
-                interesses: [],
-                conheceu: "",
+                titulo: "Aula 06: v-bind",
+                imagem: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
+                alt: "Vue.js",
+                classHtml: "green",
+                img: "vueImg"
             }
         });
 
