@@ -10,22 +10,20 @@
 <body>
     <div id="app">
         <h1>{{titulo}}</h1>
-        <button :class="btnClassLimpar">Limpar</button>
-        <button :class="btnClassEnviar">Enviar</button>
+        <form action="https://www.google.com">
+            <button type="submit" class="btn btn-primary" v-on:click.prevent.stop="enviar()">Enviar</button>
+        </form>
     </div>
     <script>
         var app = new Vue({
             el: "#app",
             data: {
-                titulo: "Aula 07: v-bind class e style",
-                btnClassLimpar: {
-                    'btn-danger': true,
-                    'btn-lg': true
-                },
-
-                btnClassEnviar: [
-                    'btn-primary', {'btn-sm': true}
-                ]
+                titulo: "Aula 08: v-on ",
+            },
+            methods: {
+                enviar(){
+                    alert('Enviado!');
+                }
             }
         });
 
