@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app">
+        <br><br><br><br><br>
+
+        <div class="container">
+            <input-form></input-form>
+
+            <br>
+
+            <my-list></my-list>
+        </div>
+    </div>
+
+    <template id="form">
+        <div class="card">
+            <div class="card-block">
+                <div class="form-group">
+                    <label for="">Título</label>
+                    <input v-model="title" type="text" class="form-control">
+                </div>
+                <button @click.stop.prevent="submit()" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </template>
+    
+    <template id="list">
+        <ul class="list-group">
+            <li v-for="item in list" class="list-group-item">{{ item.title }}</li>
+        </ul>
+    </template>
+    
+    <script>
+        Vue.component('input-form', {
+            template: '#form',
+            data(){
+                return {
+                    title: '',
+                }
+            },
+            methods: {
+                submit() {
+                    this.$eventHub.$emit('submit', this.title);
+                }
+            }
+        });
+
+        Vue.component('my-list', {
+            template: '#list',
+            created(){
+                var vs = this;
+                this.$eventHub.$on('submit', function(title){
+                    if(title){
+                        vs.list.push[{title: title}];
+                    }
+                });
+            },
+
+            data(){
+                return {
+                    list: [
+                        {title: "Ir a feira"},
+                    ]
+                }
+            },
+        });
+
+        Vue.prototype.$eventHub = new Vue();
+
+        var app = new Vue({
+            el: "#app",
+
+            data: {
+                titulo: "Aula 15: Vue.js enviando dados entre componentes não parentes"
+            }
+        });
+
+    </script>
+</body>
+</html>
